@@ -25,14 +25,14 @@
 .toggle-sidebar-btn {
     position: absolute;
     bottom: 78px;
-    right: -76px;
+    right: -59px;
     background-color: #98c10f;
     width: 76px;
     border-bottom-right-radius: 40px;
     border-top-right-radius: 40px;
     color: white;
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     border: none;
-    padding: 8px 0px;
+    padding: 8px 0;
 }
