@@ -1,4 +1,14 @@
 .App {
-  text-align: center;
+margin: 0;
+display: block;
+height: auto;
+background-color: #e3e3e3;
 }
 
+ul{
+list-style: none;
+}
+
+a {
+text-decoration: none;
+}
