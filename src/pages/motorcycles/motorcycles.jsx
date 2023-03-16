@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getMotorcycles } from '../../redux/motorcycle/motorcycle';
 import MotorcycleCard from './MotorcycleCard/MotorcycleCard';
+
 import './motorcycles.css';
 
 function Motorcycles() {

@@ -4,7 +4,7 @@ import UserReservationTable from './components/userReservationTable/UserReservat
 import {AddMotorcycle} from './components/addMotorcycle/AddMotorcycle';
 import {AddMotorcycle} from './components/deleteMotorcycle/deletemotorcycle';
 import { Routes, Route } from 'react-router-dom';
-import Motorcycles from './pages/motorcycles/motorcycles';
+import Motorcycles from './pages/motorcycles/Motorcycles';
 
 function App() {
   return (
