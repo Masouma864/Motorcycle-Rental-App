@@ -1,5 +1,7 @@
 import './App.css';
 import ReservationForm from './components/reservationForm/ReservationForm';
+import {AddMotorcycle} from './components/addMotorcycle/AddMotorcycle';
+import { Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
@@ -8,6 +10,9 @@ function App() {
       
         <ReservationForm />
       </div>
+      <Routes>
+        <Route path="/add-motorcycle" element={<AddMotorcycle />} />
+      </Routes>
     </div>
   );
 }
