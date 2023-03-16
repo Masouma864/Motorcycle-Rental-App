@@ -8,8 +8,8 @@ import * as RiIcons from 'react-icons/ri';
 export const navLinks = [
   {
     id: 1,
-    title: 'Cars',
-    icon: <IoIcons.IoIosCar />,
+    title: 'Motorcycle',
+    icon: <IoIcons.IoIosMotorcycle />,
     path: '/',
     cName: 'sidebar-link',
   },
@@ -29,16 +29,16 @@ export const navLinks = [
   },
   {
     id: 4,
-    title: 'Add Car',
+    title: 'Add Motorcycle',
     icon: <GiIcons.GiCartwheel />,
-    path: '/add-car',
+    path: '/add-motorcycle',
     cName: 'sidebar-link',
   },
   {
     id: 5,
-    title: 'Delete Car',
+    title: 'Delete Motorcycle',
     icon: <RiIcons.RiDeleteBack2Line />,
-    path: '/delete-car',
+    path: '/delete-motorcycle',
     cName: 'sidebar-link',
   },
 ];
