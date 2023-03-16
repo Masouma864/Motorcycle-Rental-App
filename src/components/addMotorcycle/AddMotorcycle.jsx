@@ -9,6 +9,7 @@ const AddMotorcycle = () => {
     name: '',
     description: '',
     price: '',
+    image:null,
     model: '',
     year: '',
   });
@@ -19,20 +20,31 @@ const AddMotorcycle = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const  motorcycle = {
-      name:  motorcycleData.name,
-      description:  motorcycleData.description,
-      price: motorcycleData.price,
-      model: motorcycleData.model,
-      year:  motorcycleData.year,
-    };
-    dispatch(createMotorcycle(motorcycle));
+    const data = new FormData();
+    data.append('motorcycle[name]', motorcycleData.name);
+    data.append('motorcycle[description]', motorcycleData.description);
+    data.append('motorcycle[price]', motorcycleData.price);
+    data.append('motorcycle[image]', motorcycleData.image);
+    data.append('motorcycle[test_drive_fee]', motorcycleData.test_drive_fee);
+    data.append('motorcycle[model]', motorcycleData.model);
+    data.append('motorcycle[year]', motorcycleData.year);
+
+    dispatch(createMotorcycle(data));
     gohome();
   };
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+
+    setMotorcycleData((prevMotorcycleData) => ({
+      ...prevMotorcycleData,
+      image: file,
+    }));
+  };
+
 
   const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setMotorcycleData({ ... motorcycleData, [name]: value });
+   
+    setMotorcycleData({ ... motorcycleData, [event.target.name]: event.target.value });
   };
 
   return (
@@ -43,7 +55,7 @@ const AddMotorcycle = () => {
         <h2 className="title">
           Add a new  motorcycle
         </h2>
-        <div className="w-full">
+        <div className="w-full form-control">
           <input
             type="text"
             name="name"
@@ -51,7 +63,7 @@ const AddMotorcycle = () => {
             value={ motorcycleData.name}
             onChange={handleInputChange}
             autoComplete="off"
-            className="w-full"
+            className="w-full form-control"
             required
           />
         </div>
@@ -61,7 +73,7 @@ const AddMotorcycle = () => {
             value={ motorcycleData.description}
             name="description"
             onChange={handleInputChange}
-            className="w-full"
+            className="w-full form-control"
             placeholder="Description"
             required
           />
@@ -74,7 +86,7 @@ const AddMotorcycle = () => {
             placeholder="Model"
             name="model"
             onChange={handleInputChange}
-            className="w-full"
+            className="w-full form-control"
             required
           />
         </div>
@@ -85,23 +97,30 @@ const AddMotorcycle = () => {
             placeholder="Price"
             name="price"
             onChange={handleInputChange}
-            className="w-full"
+            className="w-full form-control"
             required
           />
         </div>
-        <div>
-        <label htmlFor="year">Year</label>
+        <div className="input-group mb-3">
+          <span className="input-group-text" id="basic-addon3">Add an Image</span>
+          <input type="file" name="image" className="form-control" id="basic-url" aria-describedby="basic-addon3" onChange={handleImageChange} />
+        </div>
+        <div className="input-group mb-3">
+        <span className="input-group-text" id="basic-addon3">Year</span>
           <input
             type="date"
             value={ motorcycleData.year}
             name="year"
             onChange={handleInputChange}
-            className="w-full"
+            className="w-full form-control"
             required
           />
         </div>
+       
+        
         <button
           type="submit"
+          className="btn btn-primary mb-3"
         >
           Add
         </button>
