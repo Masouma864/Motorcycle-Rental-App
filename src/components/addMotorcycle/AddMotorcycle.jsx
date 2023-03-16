@@ -9,7 +9,7 @@ const AddMotorcycle = () => {
     name: '',
     description: '',
     price: '',
-    image:null,
+    image: null,
     model: '',
     year: '',
   });
@@ -43,8 +43,8 @@ const AddMotorcycle = () => {
 
 
   const handleInputChange = (event) => {
-   
-    setMotorcycleData({ ... motorcycleData, [event.target.name]: event.target.value });
+
+    setMotorcycleData({ ...motorcycleData, [event.target.name]: event.target.value });
   };
 
   return (
@@ -60,7 +60,7 @@ const AddMotorcycle = () => {
             type="text"
             name="name"
             placeholder="Enter  Motorcycle name"
-            value={ motorcycleData.name}
+            value={motorcycleData.name}
             onChange={handleInputChange}
             autoComplete="off"
             className="w-full form-control"
@@ -70,7 +70,7 @@ const AddMotorcycle = () => {
         <div>
           <input
             type="text"
-            value={ motorcycleData.description}
+            value={motorcycleData.description}
             name="description"
             onChange={handleInputChange}
             className="w-full form-control"
@@ -78,11 +78,11 @@ const AddMotorcycle = () => {
             required
           />
         </div>
-    
+
         <div>
           <input
             type="text"
-            value={ motorcycleData.model}
+            value={motorcycleData.model}
             placeholder="Model"
             name="model"
             onChange={handleInputChange}
@@ -93,7 +93,7 @@ const AddMotorcycle = () => {
         <div>
           <input
             type="number"
-            value={ motorcycleData.price}
+            value={motorcycleData.price}
             placeholder="Price"
             name="price"
             onChange={handleInputChange}
@@ -106,18 +106,18 @@ const AddMotorcycle = () => {
           <input type="file" name="image" className="form-control" id="basic-url" aria-describedby="basic-addon3" onChange={handleImageChange} />
         </div>
         <div className="input-group mb-3">
-        <span className="input-group-text" id="basic-addon3">Year</span>
+          <span className="input-group-text" id="basic-addon3">Year</span>
           <input
             type="date"
-            value={ motorcycleData.year}
+            value={motorcycleData.year}
             name="year"
             onChange={handleInputChange}
             className="w-full form-control"
             required
           />
         </div>
-       
-        
+
+
         <button
           type="submit"
           className="btn btn-primary mb-3"

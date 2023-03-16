@@ -13,3 +13,6 @@ list-style: none;
 a {
 text-decoration: none;
 }
+.main-container{
+  height: 100vh;
+}
