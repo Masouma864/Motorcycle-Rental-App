@@ -1,11 +1,12 @@
 import './App.css';
-import SideBar from './components/sidebar/SideBar';
+import ReservationForm from './components/reservationForm/ReservationForm';
 
 function App() {
   return (
     <div className="App">
       <div className="d-flex flex-row">
-        <SideBar />
+      
+        <ReservationForm />
       </div>
     </div>
   );
