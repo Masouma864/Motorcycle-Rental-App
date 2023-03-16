@@ -1,8 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { createMotorcycle } from './motorcycle/motorcycle';
+import createMotorcycleReducer from '../components/motorcycle/motorcycle';
+import deleteMotorcycleReducer from '../components/deleteMotorcycle/deletemotorcycle';
 
 export default configureStore({
     reducer: {
-        newMotorcycle: createMotorcycle,
+        newMotorcycle: createMotorcycleReducer,
+        delete:deleteMotorcycleReducer,
     },
 });
