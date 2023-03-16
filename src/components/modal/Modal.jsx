@@ -3,7 +3,7 @@ import './modal.css';
 
 const Modal = () => {
   const [userId, setUserId] = useState('');
-  const [bikeId, setBikeId] = useState('');
+  const [ motorcycleId, setMotorcycleId] = useState('');
   const [duration, setDuration] = useState('');
   const [reservationDate, setReservationDate] = useState('');
 
@@ -11,7 +11,7 @@ const Modal = () => {
     e.preventDefault();
     console.log({
       userId,
-      bikeId,
+      motorcycleId,
       duration,
       reservationDate,
     });
@@ -28,12 +28,12 @@ const Modal = () => {
         onChange={(e) => setUserId(e.target.value)}
       />
 
-      <label htmlFor="bikeId">Bike ID:</label>
+      <label htmlFor=" motorcycleId"> Motorcycle ID:</label>
       <input
         type="text"
-        id="bikeId"
-        value={bikeId}
-        onChange={(e) => setBikeId(e.target.value)}
+        id=" motorcycleId"
+        value={ motorcycleId}
+        onChange={(e) => setMotorcycleId(e.target.value)}
       />
 
       <label htmlFor="duration">Duration:</label>
