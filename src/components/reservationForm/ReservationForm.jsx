@@ -7,6 +7,10 @@ const cities = [
     { value: 'new-york', label: 'New York' },
     { value: 'los-angeles', label: 'Los Angeles' },
     { value: 'san-francisco', label: 'San Francisco' },
+    { value: 'bradenton-beach', label: 'Bradenton Beach' },
+    { value: 'charlottetown', label: 'Charlottetown' },
+    { value: 'bankog', label: 'Bankog' },
+    { value: 'Beijing', label: 'Beijing' },
 ];
 function ReservationForm() {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -67,7 +71,7 @@ function ReservationForm() {
                     <div className="modal-content">
                         <button className="cls-m-btn" type="button" onClick={handleModalClose}>X</button>
                         <br />
-                        <Modal />
+                        <Modal  selectedCity={selectedCity.value} setIsModalOpen={setIsModalOpen} />
                     </div>
                 </div>
             )}
