@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { createMotorcycle } from '../../redux/motorcycle/motorcycle';
+import { useNavigate } from 'react-router-dom';
+import './addmotorcycle.css';
 
 const AddMotorcycle = () => {
   const [motorcycleData, setMotorcycleData] = useState({
@@ -10,6 +12,8 @@ const AddMotorcycle = () => {
     model: '',
     year: '',
   });
+  const navigate = useNavigate();
+  const gohome = () => navigate('/');
 
   const dispatch = useDispatch();
 
@@ -23,6 +27,7 @@ const AddMotorcycle = () => {
       year:  motorcycleData.year,
     };
     dispatch(createMotorcycle(motorcycle));
+    gohome();
   };
 
   const handleInputChange = (event) => {
@@ -31,12 +36,12 @@ const AddMotorcycle = () => {
   };
 
   return (
-    <div>
+    <div className="form-container">
       <form
         onSubmit={handleSubmit}
       >
-        <h2 className="w-full text-center">
-          Add a New  Motorcycle
+        <h2 className="title">
+          Add a new  motorcycle
         </h2>
         <div className="w-full">
           <input
@@ -57,7 +62,7 @@ const AddMotorcycle = () => {
             name="description"
             onChange={handleInputChange}
             className="w-full"
-            placeholder="description"
+            placeholder="Description"
             required
           />
         </div>
@@ -85,6 +90,7 @@ const AddMotorcycle = () => {
           />
         </div>
         <div>
+        <label htmlFor="year">Year</label>
           <input
             type="date"
             value={ motorcycleData.year}
