@@ -1,0 +1,19 @@
+.motorcycle-card {
+    align-items: center;
+}
+
+.motorcycle-image {
+    height: 15rem;
+    width: 20rem
+}
+
+@media only screen and (max-width: 768px) {
+    .car-card {
+      height: auto;
+    }
+
+    .car-image {
+        height: auto;
+        width: 10rem
+    }
+  }
