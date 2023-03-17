@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
-import { getCars } from '../../redux/cars/cars';
+import { getMotorcycles } from '../../redux/motorcycles/motorcycles';
 import { addReservation, fetchReservations } from '../../redux/reservations/reservation';
 import './modal.css';
 
@@ -10,28 +10,28 @@ const Modal = ({ selectedCity, setIsModalOpen }) => {
 
   const [duration, setDuration] = useState('');
   const [reservationDate, setReservationDate] = useState('');
-  const motorcyclesData = useSelector((state) => state.cars);
+  const motorcyclesData = useSelector((state) => state.motorcycles);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const gohome = () => navigate('/myreservations');
 
-  const cars = carsData.map((car) => ({
-    id: car.id,
-    car_name: car.name,
+  const motorcycles = motorcyclesData.map((motorcycle) => ({
+    id: motorcycle.id,
+    motorcycle_name: motorcycle.name,
   }));
 
   useEffect(() => {
-    dispatch(getCars());
+    dispatch(getMotorcycles());
   }, [dispatch]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const selectedCar = cars.find((car) => car.car_name === carName);
-    const carId = selectedCar ? selectedCar.id : null;
+    const selectedMotorcycle  = motorcycles.find((motorcycle) => motorcycle.motorcycle_name === motorcycleName);
+    const motorcycleId = selectedMotorcycle ? selectedMotorcycle .id : null;
     const data = {
       reservation_date: reservationDate,
       duration,
-      car_id: carId,
+      motorcycle_id: motorcycleId,
       city: selectedCity,
     };
     dispatch(addReservation(data));
@@ -45,10 +45,10 @@ const Modal = ({ selectedCity, setIsModalOpen }) => {
       <h3>Fill the fieds below</h3>
      
       <label htmlFor=" motorcycleName"> Motorcycle Name:</label>
-      <select id="carName" value={carName} onChange={(e) => setCarName(e.target.value)}>
-        <option value="">Select a car</option>
-        {cars.map((car) => (
-          <option key={car.id} value={car.car_name}>{car.car_name}</option>
+      <select id="motorcycleName" value={motorcycleName} onChange={(e) => setMotorcycleName(e.target.value)}>
+        <option value="">Select a motorcycle</option>
+        {motorcycles.map((motorcycle) => (
+          <option key={motorcycle.id} value={motorcycle.motorcycle_name}>{motorcycle.motorcycle_name}</option>
         ))}
       </select>
 
