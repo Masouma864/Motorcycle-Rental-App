@@ -1,13 +1,18 @@
-import './sidebar.css';
 import React, { useState } from 'react';
 import * as RxIcons from 'react-icons/rx';
 import Links from './Links/Links';
+import SocialLinks from './SocialLinks/SocialLinks';
+import './sidebar.css';
 
-const toggleSidebar = () => {
+const SideBar = () => {
+  const [sidebar, setSidebar] = useState(true);
+
+  const toggleSidebar = () => {
     setSidebar(!sidebar);
     const toggleBtn = document.querySelector('.toggle-sidebar-btn');
     toggleBtn.classList.toggle('move');
   };
+
   return (
     <div className="position-relative">
       {sidebar && (
@@ -23,6 +28,12 @@ const toggleSidebar = () => {
       )}
       <button
         type="button"
-        className="toggle-sidebar-btn"/>
-);
+        className="toggle-sidebar-btn"
+        onClick={toggleSidebar}
+      >
+        <RxIcons.RxHamburgerMenu size="2.5em" />
+      </button>
+    </div>
+  );
+};
 export default SideBar;
