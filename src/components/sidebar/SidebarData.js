@@ -1,6 +1,8 @@
 import React from 'react';
 import * as GiIcons from 'react-icons/gi';
 import * as IoIcons from 'react-icons/io';
+import * as GiIcons from 'react-icons/gi';
+import * as IoIcons from 'react-icons/io';
 import * as FaIcons from 'react-icons/fa';
 import * as MdIcons from 'react-icons/md';
 import * as RiIcons from 'react-icons/ri';

@@ -1,4 +1,7 @@
 import './sidebar.css';
+import React, { useState } from 'react';
+import * as RxIcons from 'react-icons/rx';
+import Links from './Links/Links';
 
 const SideBar = () => (
     <div className="position-relative">
