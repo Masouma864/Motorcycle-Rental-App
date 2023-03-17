@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 import { useDispatch, useSelector } from 'react-redux';
 import { signup } from '../../redux/auth/auth';
-import loader from '../../assets/loader2.gif';
+import loader from '../../assets/loader.gif';
 
 const SignupForm = () => {
   const [name, setName] = useState('');
