@@ -1,19 +1,19 @@
-import {GET_CARS} from '../types';
-import getCarsFromDB from '../../APIs/cars';
+import {GET_MOTORCYCLES} from '../types';
+import getMotorcyclesFromDB from '../../APIs/motorcycles';
 
 const initialState = [];
 
-export const getCars = () => async (dispatch) => {
-  const cars = await getCarsFromDB();
+export const getMotorcycles = () => async (dispatch) => {
+  const motorcycles = await getMotorcyclesFromDB();
   dispatch({
-    type: GET_CARS,
-    payload: cars,
+    type: GET_MOTORCYCLES,
+    payload: motorcycles,
   });
 };
 
-export const carsReducer = (state = initialState, action) => {
+export const motorcyclesReducer = (state = initialState, action) => {
   switch (action.type) {
-    case GET_CARS:
+    case GET_MOTORCYCLES:
       return action.payload;
 
     default:

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch , useRef} from 'react-redux';
 import { getMotorcycles } from '../../redux/motorcycle/motorcycle';
-import MotorcycleCard from './MotorcycleCard/MotorcycleCard';
+import MotorcycleCard from './motorcycleCard/MotorcycleCard';
 
 import './motorcycles.css';
 
@@ -55,7 +55,7 @@ function Motorcycles() {
             <button type="button" onClick={handlePrevPage} className="pagination-btn btn " disabled={prevButtonDisabled}>
             <RxIcons.RxTriangleLeft size="3em" />
             </button>
-            <div className="d-flex flex-row align-items-baseline justify-content-center"></div>
+            <div className="d-flex flex-row align-items-baselinecars-box" ref={carsContainerRef}></div>
             {motorcycles.map((motorcycle) => (
                 <MotorcycleCard motorcycle={motorcycle} key={motorcycle.id} />
             ))}

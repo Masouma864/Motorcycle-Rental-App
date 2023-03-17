@@ -29,8 +29,9 @@ const AddMotorcycle = () => {
     data.append('motorcycle[model]', motorcycleData.model);
     data.append('motorcycle[year]', motorcycleData.year);
 
-    dispatch(createMotorcycle(data));
+    dispatch(createMotorcycle(data)).then(() => {
     gohome();
+    });
   };
   const handleImageChange = (e) => {
     const file = e.target.files[0];

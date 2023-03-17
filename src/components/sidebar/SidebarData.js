@@ -1,8 +1,6 @@
 import React from 'react';
 import * as GiIcons from 'react-icons/gi';
 import * as IoIcons from 'react-icons/io';
-import * as GiIcons from 'react-icons/gi';
-import * as IoIcons from 'react-icons/io';
 import * as FaIcons from 'react-icons/fa';
 import * as MdIcons from 'react-icons/md';
 import * as RiIcons from 'react-icons/ri';
@@ -10,7 +8,7 @@ import * as RiIcons from 'react-icons/ri';
 export const navLinks = [
   {
     id: 1,
-    title: 'Motorcycle',
+    title: 'MOTORCYCLES',
     icon: <IoIcons.IoIosMotorcycle />,
     path: '/',
     cName: 'sidebar-link',
@@ -48,7 +46,7 @@ export const navLinks = [
     title: 'Logout',
     icon: <RiIcons.RiDeleteBack2Line />,
     path: '/',
-    cName: 'sidebar-link',
+    cName: 'sidebar-link logout-btn',
     action: 'logout',
   },
 

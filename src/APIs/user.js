@@ -27,5 +27,3 @@ export const getToken = async (reqBody) => {
     throw new Error(error);
   }
 };
-Footer
-© 2023 GitHub, Inc.

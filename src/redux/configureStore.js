@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
-import createMotorcycleReducer from '../components/motorcycle/motorcycle';
-import deleteMotorcycleReducer from '../components/deleteMotorcycle/deletemotorcycle';
+import createMotorcycleReducer from './motorcycle/motorcycle';
+import deleteMotorcycleReducer from './deletemotorcycle/deletemotorcycle';
 import reservationReducer from './reservations/reservation';
 import { authReducer } from './auth/auth';
 
