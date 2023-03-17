@@ -1,23 +1,19 @@
 import './App.css';
-import ReservationForm from './components/reservationForm/ReservationForm';
-import UserReservationTable from './components/userReservationTable/UserReservationTable';
-import {AddMotorcycle} from './components/addMotorcycle/AddMotorcycle';
-import {RemoveMotorcycle} from './components/deleteMotorcycle/deletemotorcycle';
-import { Routes, Route } from 'react-router-dom';
-import Motorcycles from './pages/motorcycles/Motorcycles';
+import { useSelector } from 'react-redux';
+import AuthenticatedRoute from './routes/AuthenticatedRoute';
+import UnAuthenticatedRoute from './routes/UnAuthenticatedRoute';
 
 function App() {
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   return (
     <div className="app">
      
      
-      <Routes>
-        <Route path="/add-motorcycle" element={<AddMotorcycle />} />
-        <Route path="/" element={<Motorcycles />} />
-        <Route path="/delete-motorcycle" element={<RemoveMotorcycle />} />
-        <Route path="/myreservations" element={<UserReservationTable />} />
-        <Route path="/ReservationForm" element={<ReservationForm />} />
-      </Routes>
+     {!isAuthenticated ? (
+        <UnAuthenticatedRoute />
+      ) : (
+        <AuthenticatedRoute />
+      )}
     </div>
   );
 }
