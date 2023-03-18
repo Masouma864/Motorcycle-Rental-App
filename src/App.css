@@ -1,18 +1,19 @@
 .app {
-margin: 0;
-display: grid;
-height: auto;
-background-color: #e3e3e3;
-grid-template-columns: 30% 60%;
+  margin: 0;
+  display: grid;
+  height: auto;
+  background-color: #e3e3e3;
+  grid-template-columns: 30% 60%;
 }
 
-ul{
-list-style: none;
+ul {
+  list-style: none;
 }
 
 a {
-text-decoration: none;
+  text-decoration: none;
 }
-.main-container{
+
+.main-container {
   height: 100vh;
 }

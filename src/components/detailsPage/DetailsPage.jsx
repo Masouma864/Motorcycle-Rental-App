@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import './modal.css';
 import { useNavigate } from 'react-router-dom';
 import { addReservation, fetchReservations } from '../../redux/reservations/reservation';
+import loader from '../../assets/loader.gif';
 
 const cities = [
   { value: 'new-york', label: 'New York' },
