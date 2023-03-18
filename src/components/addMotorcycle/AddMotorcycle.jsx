@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { createMotorcycle } from '../../redux/motorcycle/motorcycle';
 import { useNavigate } from 'react-router-dom';
+import { createMotorcycle } from '../../redux/motorcycle/motorcycle';
 import './addmotorcycle.css';
 
 const AddMotorcycle = () => {
@@ -29,8 +29,9 @@ const AddMotorcycle = () => {
     data.append('motorcycle[model]', motorcycleData.model);
     data.append('motorcycle[year]', motorcycleData.year);
 
-    dispatch(createMotorcycle(data));
-    gohome();
+    dispatch(createMotorcycle(data)).then(() => {
+      gohome();
+    });
   };
   const handleImageChange = (e) => {
     const file = e.target.files[0];
@@ -41,9 +42,7 @@ const AddMotorcycle = () => {
     }));
   };
 
-
   const handleInputChange = (event) => {
-
     setMotorcycleData({ ...motorcycleData, [event.target.name]: event.target.value });
   };
 
@@ -103,7 +102,14 @@ const AddMotorcycle = () => {
         </div>
         <div className="input-group mb-3">
           <span className="input-group-text" id="basic-addon3">Add an Image</span>
-          <input type="file" name="image" className="form-control" id="basic-url" aria-describedby="basic-addon3" onChange={handleImageChange} />
+          <input
+            type="file"
+            name="image"
+            className="form-control"
+            id="basic-url"
+            aria-describedby="basic-addon3"
+            onChange={handleImageChange}
+          />
         </div>
         <div className="input-group mb-3">
           <span className="input-group-text" id="basic-addon3">Year</span>
@@ -116,7 +122,6 @@ const AddMotorcycle = () => {
             required
           />
         </div>
-
 
         <button
           type="submit"

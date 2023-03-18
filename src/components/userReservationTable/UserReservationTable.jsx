@@ -1,12 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import './userReservationTable.css';
+import { Table, Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
+import loader from '../../assets/loader.gif';
+import loaders from '../../assets/loader2.gif';
+import date from '../../assets/date.png';
+import city from '../../assets/city.png';
+import motorcycle from '../../assets/motorcycle.png';
+import del from '../../assets/del.png';
+import time from '../../assets/time.png';
 import {
   fetchReservations,
   deleteReservation,
 } from '../../redux/reservations/reservation';
 import { getMotorcycles } from '../../redux/motorcycles/motorcycles';
-
 
 const UserReservationTable = () => {
   const motorcyclesData = useSelector((state) => state.motorcycles);
@@ -24,6 +32,7 @@ const UserReservationTable = () => {
   useEffect(() => {
     dispatch(getMotorcycles());
     dispatch(fetchReservations());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleCancelClick = (id) => {
@@ -60,7 +69,7 @@ const UserReservationTable = () => {
             <tr>
               <th>ID</th>
               <th>
-              Motorcycle
+                Motorcycle
                 {' '}
                 <img src={motorcycle} alt="date" className="table-img" />
               </th>
@@ -89,11 +98,11 @@ const UserReservationTable = () => {
           <tbody>
             {reservations.map((reservation) => {
               const motorcycle = motorcycles.find((motorcycle) => motorcycle.id === reservation.motorcycle_id);
-              const motorcycleName = motorcycle? motorcycle.motorcycle_name : 'Unknown Motorcycle';
+              const motorcycleName = motorcycle ? motorcycle.motorcycle_name : 'Unknown Motorcycle';
               return (
                 <tr key={reservation.id}>
                   <td>{reservation.id}</td>
-                  <td>{motorcycle.Name}</td>
+                  <td>{motorcycleName}</td>
                   <td>{reservation.city}</td>
                   <td>{reservation.reservation_date}</td>
                   <td>
