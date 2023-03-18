@@ -1,8 +1,11 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 import { getAllMotorcycles, deleteMotorcycle } from '../../redux/deletemotorcycle/deletemotorcycle';
 import trashcan from '../../assets/trash.gif';
-import { toast } from 'react-toastify';
+import './deletecar.css';
+import loaders from '../../assets/loader.gif';
+
 
 const RemoveMotorcycle = () => {
   const dispatch = useDispatch();
@@ -24,7 +27,7 @@ const RemoveMotorcycle = () => {
   };
 
   if (loading) {
-    return <div>Loading...</div>;
+    return  (<div className="center"><img className="loading-cars" src={loaders} alt="loading" /></div>);
   }
 
   if (error) {
@@ -33,6 +36,7 @@ const RemoveMotorcycle = () => {
 
   return (
     <div className="d-flex w-full del-container">
+        <ol className="list-group list-group-numbered del-list"></ol>
       <div className="d-flex w-full del-header">
         <h2>
           Delete A Motorcycle

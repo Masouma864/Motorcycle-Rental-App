@@ -55,7 +55,7 @@ const DetailsPage = () => {
                 {' '}
                 <span>{motorcycle.description}</span>
               </li>
-             
+
               <li className="-info">
                 MODEL
                 {' '}

@@ -42,7 +42,7 @@ function ReservationForm() {
           </p>
         </div>
         <div className="buttons" style={{ display: 'flex', alignItems: 'center', marginTop: '2rem' }}>
-        
+
           <Select
             id="select_city"
             className="select"

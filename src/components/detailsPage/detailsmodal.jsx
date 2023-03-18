@@ -62,7 +62,7 @@ const Modal = ({ selectedMotorcycle, setIsModalOpen }) => {
       <h3>Fill the fields below</h3>
 
       <label htmlFor="motorcycleName" className="d-flex flex-column">
-      Motorcycle Name:
+        Motorcycle Name:
         <select id="motorcycleName">
           <option key={selectedMotorcycle.id} value={selectedMotorcycle.name}>
             {selectedMotorcycle.name}
