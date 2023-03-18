@@ -1,96 +1,110 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import Select from 'react-select';
-import PropTypes from 'prop-types';
-import './modal.css';
-import { useNavigate } from 'react-router-dom';
-import { addReservation, fetchReservations } from '../../redux/reservations/reservation';
+import {  useEffect,useState } from 'react';
+import { useParams, Link } from 'react-router-dom';
+import Modal from './detailsmodal';
+import './details.css';
+import { URL } from '../../constants';
 import loader from '../../assets/loader.gif';
+import rotate from '../../assets/rotate.svg';
+import arrow from '../../assets/right-arrow.svg';
+import circle from '../../assets/circle.png';
 
-const cities = [
-  { value: 'new-york', label: 'New York' },
-  { value: 'los-angeles', label: 'Los Angeles' },
-  { value: 'san-francisco', label: 'San Francisc' },
-  { value: 'bradenton-beach', label: 'Bradenton Beach' },
-  { value: 'charlottetown', label: 'Charlottetown' },
-  { value: 'bankog', label: 'Bankog' },
-  { value: 'Beijing', label: 'Beijing' },
-];
-
-const Modal = ({ selectedCar, setIsModalOpen }) => {
-  const [duration, setDuration] = useState('');
-  const [reservationDate, setReservationDate] = useState('');
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const gohome = () => navigate('/myreservations');
-  const [selectedCity, setSelectedCity] = useState('');
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const data = {
-      reservation_date: reservationDate,
-      duration,
-      car_id: selectedCar.id,
-      city: selectedCity.value,
-    };
-    dispatch(addReservation(data));
-    dispatch(fetchReservations());
+const DetailsPage = () => {
+  const { id } = useParams();
+  const [car, setCar] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const handleModalOpen = () => {
+    setIsModalOpen(true);
+  };
+  const handleModalClose = () => {
     setIsModalOpen(false);
-    gohome();
+  };
+
+  useEffect(() => {
+    fetch(`${URL}/api/v1/cars/${id}`)
+      .then((response) => response.json())
+      .then((data) => setCar(data));
+  }, [id]);
+  const turnImage = () => {
+    const img = document.getElementById('myImage');
+    img.classList.toggle('rotate-image');
   };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-    >
-      <h3>Fill the fieds below</h3>
-
-      <label htmlFor="carName">Car Name:</label>
-      <select id="carName">
-        <option key={selectedCar.id} value={selectedCar.name}>{selectedCar.name}</option>
-      </select>
-      <label htmlFor="select_city">Select a city</label>
-      <Select
-        id="select_city"
-        className="select"
-        options={cities}
-        value={selectedCity}
-        onChange={setSelectedCity}
-        styles={{
-          control: (provided) => ({
-            ...provided,
-            borderRadius: '25px',
-            height: '2.7rem',
-            background: '#a2d31a',
-            border: '1px solid white',
-            width: '10.2rem',
-            color: 'white',
-          }),
-        }}
-      />
-      <label htmlFor="duration">Duration:</label>
-      <input
-        type="number"
-        id="duration"
-        value={duration}
-        onChange={(e) => setDuration(e.target.value)}
-      />
-
-      <label htmlFor="reservationDate">Reservation Date:</label>
-      <input
-        type="date"
-        id="reservationDate"
-        value={reservationDate}
-        onChange={(e) => setReservationDate(e.target.value)}
-      />
-
-      <button type="submit">Book Reservation</button>
-    </form>
+    <div className="main-holder">
+      {car ? (
+        <section className="details-holder">
+          <div>
+            <img id="myImage" src={car.image_url} className="d-car-image" alt="img" />
+            <button type="button" className="rotate-btn" onClick={turnImage}>
+              <img src={rotate} alt="rotate" width="40px" />
+            </button>
+          </div>
+          <div className="car-info">
+            <ul>
+              <li className="name">{car.name}</li>
+              <li className="-info">
+                PRICE
+                {' '}
+                <span>
+                  {car.price}
+                  $
+                </span>
+              </li>
+              <li className="-info">
+                DISCRIPTION
+                {' '}
+                <span>{car.description}</span>
+              </li>
+              <li className="-info">
+                TEST DRIVE FEE
+                {' '}
+                <span>
+                  {car.test_drive_fee}
+                  $
+                </span>
+              </li>
+              <li className="-info">
+                MODEL
+                {' '}
+                <span>{car.model}</span>
+              </li>
+              <li className="-info">
+                YEAR MANUFACTURED
+                {' '}
+                <span>{car.year}</span>
+              </li>
+              <div className="link">
+                <Link to="/" className="discover">
+                  Discover more cars
+                  {' '}
+                  <img src={arrow} alt="left arrow" width="10px" />
+                </Link>
+                <img className="circle" src={circle} alt="circle" />
+                <button type="button" onClick={handleModalOpen}>Reserve +</button>
+              </div>
+            </ul>
+          </div>
+        </section>
+      ) : (
+        <img className="loading-car" src={loader} alt="loading" />
+      )}
+      {isModalOpen && (
+        <div className="modal">
+           <div className="modal-content">
+            <button
+              className="cls-m-btn"
+              type="button"
+              onClick={handleModalClose}
+            >
+              X
+            </button>
+            <br />
+            <Modal selectedCar={car} setIsModalOpen={setIsModalOpen} />
+          </div>
+        </div>
+      )}
+    </div>
   );
 };
 
-Modal.propTypes = ({
-  selectedCity: PropTypes.string,
-}).isRequired;
-
-export default Modal;
+export default DetailsPage;
