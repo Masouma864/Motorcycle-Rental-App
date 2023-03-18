@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllMotorcycles, deleteMotorcycle } from '../../redux/deletemotorcycle/deletemotorcycle';
 import trashcan from '../../assets/trash.gif';
+import { toast } from 'react-toastify';
 
 const RemoveMotorcycle = () => {
   const dispatch = useDispatch();
@@ -13,7 +14,9 @@ const RemoveMotorcycle = () => {
   const { motorcycles, loading, error } = useSelector((state) => state.delete);
 
   const handledelete = (motorcycleId) => {
-    dispatch(deleteMotorcycle(motorcycleId));
+    dispatch(deleteCar(carId)).then(() => {
+      toast.info('Deleted Car Successfully');
+    });
   };
 
   const deletemotorcycle = (id) => {

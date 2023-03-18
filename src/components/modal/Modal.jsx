@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { getMotorcycles } from '../../redux/motorcycles/motorcycles';
 import { addReservation, fetchReservations } from '../../redux/reservations/reservation';
 import './modal.css';
+import { toast } from 'react-toastify';
 
 const Modal = ({ selectedCity, setIsModalOpen }) => {
   const [motorcycleName, setMotorcycleName] = useState('');
@@ -38,6 +39,7 @@ const Modal = ({ selectedCity, setIsModalOpen }) => {
     dispatch(fetchReservations());
     setIsModalOpen(false);
     gohome();
+    toast.info('Successfully made a reservation');
   };
 
   return (

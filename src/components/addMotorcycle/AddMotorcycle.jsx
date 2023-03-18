@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { createMotorcycle } from '../../redux/motorcycle/motorcycle';
 import './addmotorcycle.css';
+import { toast } from 'react-toastify';
 
 const AddMotorcycle = () => {
   const [motorcycleData, setMotorcycleData] = useState({
@@ -31,6 +32,7 @@ const AddMotorcycle = () => {
 
     dispatch(createMotorcycle(data)).then(() => {
       gohome();
+      toast.info('Created Car Successfully');
     });
   };
   const handleImageChange = (e) => {
