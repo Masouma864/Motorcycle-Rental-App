@@ -35,17 +35,14 @@ function ReservationForm() {
           </div>
         </div>
         <div className="title">
-          <h4>BOOK A TEST DRIVE WITH WHEEL-WIZARD</h4>
+          <h4>BOOK A TEST DRIVE </h4>
           <hr className="divider" />
           <p style={{ color: '#fff' }}>
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ducimus, blanditiis. lorem10
           </p>
         </div>
-        <div className="buttons">
-          {/* <button type="button" onClick={() =>
-            handleCitySelection(selectedCity)}>
-            Select City
-            </button> */}
+        <div className="buttons" style={{ display: 'flex', alignItems: 'center', marginTop: '2rem' }}>
+        
           <Select
             id="select_city"
             className="select"
@@ -53,6 +50,7 @@ function ReservationForm() {
             value={selectedCity}
             onChange={setSelectedCity}
             placeholder="Select a City..."
+            required
             styles={{
               control: (provided) => ({
                 ...provided,
@@ -70,6 +68,11 @@ function ReservationForm() {
               dropdownIndicator: (provided) => ({
                 ...provided,
                 color: 'white',
+              }),
+              menu: (provided) => ({
+                ...provided,
+                zIndex: 100,
+                width: '200px',
               }),
             }}
           />
