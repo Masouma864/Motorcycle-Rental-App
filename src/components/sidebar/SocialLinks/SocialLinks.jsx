@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { socialLinks } from '../SidebarData';
-import './social-links.css';
+import './SocialLinks.css';
 
 function SocialLinks() {
   return (

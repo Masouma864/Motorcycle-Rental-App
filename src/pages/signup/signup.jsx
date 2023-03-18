@@ -33,6 +33,7 @@ const SignupForm = () => {
     if (success) {
       navigate('/login');
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [success]);
 
   return (

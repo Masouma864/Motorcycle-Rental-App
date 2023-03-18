@@ -9,7 +9,7 @@ export const navLinks = [
   {
     id: 1,
     title: 'MOTORCYCLES',
-    icon: <IoIcons.IoIosMotorcycle />,
+    icon: <IoIcons.IoIosCar />,
     path: '/',
     cName: 'sidebar-link',
   },

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import * as RxIcons from 'react-icons/rx';
 import Links from './Links/Links';
+import SocialLinks from './SocialLinks/SocialLinks';
 import './sidebar.css';
 
 const SideBar = () => {

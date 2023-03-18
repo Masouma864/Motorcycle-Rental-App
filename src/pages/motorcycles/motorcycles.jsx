@@ -1,70 +1,28 @@
-import { useEffect, useState } from 'react';
-import { useSelector, useDispatch , useRef} from 'react-redux';
-import { getMotorcycles } from '../../redux/motorcycle/motorcycle';
-import MotorcycleCard from './motorcycleCard/MotorcycleCard';
-
+import React, { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { getMotorcycles } from '../../redux/motorcycles/motorcycles';
 import './motorcycles.css';
+import MotorcycleCarousel from '../../components/carousel/MotorcycleCarousel';
 
-function Motorcycles() {
-    const motorcycles = useSelector((state) => state.motorcycles);
-    const dispatch = useDispatch();
-    const [prevButtonDisabled, setPrevButtonDisabled] = useState(true);
-  const [nextButtonDisabled, setNextButtonDisabled] = useState(false);
+const Motorcycles = () => {
+  const motorcycles = useSelector((state) => state.motorcycles);
+  const [currentUser, setCurrentUser] = useState('');
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getMotorcycles());
+    setCurrentUser(localStorage.getItem('current_user'));
+  }, [dispatch]);
 
-    const handleNextPage = () => {
-        if (motorcyclesContainerRef.current) {
-            const container = motorcyclesContainerRef.current;
-            container.scrollLeft += container.offsetWidth;
-            const maxScrollLeft = container.scrollWidth - container.clientWidth;
-            if (container.scrollLeft >= maxScrollLeft) {
-              setNextButtonDisabled(true);
-            }
-            setPrevButtonDisabled(false);
-        }
-    };
-
-    const handlePrevPage = () => {
-        if (motorcyclesContainerRef.current) {
-            const container = motorcyclesContainerRef.current;
-            container.scrollLeft -= container.offsetWidth;
-            if (container.scrollLeft === 0) {
-              setPrevButtonDisabled(true);
-            }
-            setNextButtonDisabled(false);
-        }
-    };
-
-    useEffect(() => {
-        const container = motorcyclesContainerRef.current;
-    if (container) {
-      setPrevButtonDisabled(container.scrollLeft === 0);
-      setNextButtonDisabled(
-        container.scrollLeft >= container.scrollWidth - container.clientWidth,
-      );
-    }
-  }, [motorcycles]);
-
-    useEffect(() => {
-        dispatch(getMotorcycles());
-    }, [dispatch]);
-    return (
-        <div className="d-flex flex-row motorcycles-container " ref={motorcyclesContainerRef}>
-            <h2 style={{ marginTop: '3rem' }}>Latest Models</h2>
-            <p style={{ color: 'rgb(182 183 184)' }}>Please select a motorcycle model</p>
-      <div className="d-flex flex-row motorcycles-container">
-            <button type="button" onClick={handlePrevPage} className="pagination-btn btn " disabled={prevButtonDisabled}>
-            <RxIcons.RxTriangleLeft size="3em" />
-            </button>
-            <div className="d-flex flex-row align-items-baselinecars-box" ref={carsContainerRef}></div>
-            {motorcycles.map((motorcycle) => (
-                <MotorcycleCard motorcycle={motorcycle} key={motorcycle.id} />
-            ))}
-            </div>
-            <button type="button" onClick={handleNextPage} className="pagination-btn btn" disabled={nextButtonDisabled}>
-                {'>'}
-            </button>
-        </div>
-    );
-}
+  return (
+    <div className="d-flex flex-column align-items-center justify-content-center w-100 overflow-hidden">
+      <h4 className="user-name">{`Welcome, ${currentUser}`}</h4>
+      <h2 className="motorcycles-section-title">Latest Models</h2>
+      <p style={{ color: 'rgb(182 183 184)' }} className="mb-0">Please select a motorcycle model</p>
+      <div className="d-flex flex-row motorcycles-container position-relative justify-content-around">
+        <MotorcycleCarousel motorcycles={motorcycles} />
+      </div>
+    </div>
+  );
+};
 
 export default Motorcycles;

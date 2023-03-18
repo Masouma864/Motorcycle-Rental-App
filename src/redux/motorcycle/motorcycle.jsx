@@ -2,7 +2,6 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { URL } from '../../constants';
 
-
 const BASE_URL = `${URL}/api/v1/cars`;
 
 const initialState = {

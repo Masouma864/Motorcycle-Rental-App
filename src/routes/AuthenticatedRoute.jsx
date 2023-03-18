@@ -6,10 +6,13 @@ import AddMotorcycle from '../components/addMotorcycle/AddMotorcycle';
 import UserReservationTable from '../components/userReservationTable/UserReservationTable';
 import RemoveMotorcycle from '../components/deleteMotorcycle/deletemotorcycle';
 import ReservationForm from '../components/reservationForm/ReservationForm';
+import Navbar from '../components/navbar/MobNavbar';
 
 const AuthenticatedRoute = () => (
   <>
-   
+    <Navbar />
+    <SideBar />
+
     <Routes>
       <Route path="/login" element={<Navigate to="/" />} />
       <Route path="/" element={<Motorcycles />} />

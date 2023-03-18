@@ -7,7 +7,7 @@ import { addReservation, fetchReservations } from '../../redux/reservations/rese
 import './modal.css';
 
 const Modal = ({ selectedCity, setIsModalOpen }) => {
-
+  const [motorcycleName, setMotorcycleName] = useState('');
   const [duration, setDuration] = useState('');
   const [reservationDate, setReservationDate] = useState('');
   const motorcyclesData = useSelector((state) => state.motorcycles);
@@ -26,8 +26,8 @@ const Modal = ({ selectedCity, setIsModalOpen }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const selectedMotorcycle  = motorcycles.find((motorcycle) => motorcycle.motorcycle_name === motorcycleName);
-    const motorcycleId = selectedMotorcycle ? selectedMotorcycle .id : null;
+    const selectedMotorcycle = motorcycles.find((motorcycle) => motorcycle.motorcycle_name === motorcycleName);
+    const motorcycleId = selectedMotorcycle ? selectedMotorcycle.id : null;
     const data = {
       reservation_date: reservationDate,
       duration,
@@ -43,7 +43,7 @@ const Modal = ({ selectedCity, setIsModalOpen }) => {
   return (
     <form onSubmit={handleSubmit}>
       <h3>Fill the fieds below</h3>
-     
+
       <label htmlFor=" motorcycleName"> Motorcycle Name:</label>
       <select id="motorcycleName" value={motorcycleName} onChange={(e) => setMotorcycleName(e.target.value)}>
         <option value="">Select a motorcycle</option>
@@ -73,7 +73,7 @@ const Modal = ({ selectedCity, setIsModalOpen }) => {
   );
 };
 Modal.propTypes = ({
-    selectedCity: PropTypes.string,
-  }).isRequired;
+  selectedCity: PropTypes.string,
+}).isRequired;
 
 export default Modal;

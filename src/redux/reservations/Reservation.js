@@ -3,7 +3,7 @@ import { URL } from '../../constants';
 
 const BASE_URL = `${URL}/api/v1/reservations`;
 const initialState = [];
-const token =  localStorage.getItem('token');
+const token = localStorage.getItem('token');
 
 export const fetchReservations = createAsyncThunk('reservations/getData', async () => {
   const response = await fetch(BASE_URL, {
