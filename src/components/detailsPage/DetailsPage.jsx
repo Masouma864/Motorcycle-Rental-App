@@ -1,4 +1,4 @@
-import {  useEffect,useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import Modal from './detailsmodal';
 import './details.css';
@@ -10,7 +10,7 @@ import circle from '../../assets/circle.png';
 
 const DetailsPage = () => {
   const { id } = useParams();
-  const [car, setCar] = useState(null);
+  const [motorcycle, setMotorcycle] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const handleModalOpen = () => {
     setIsModalOpen(true);
@@ -20,9 +20,9 @@ const DetailsPage = () => {
   };
 
   useEffect(() => {
-    fetch(`${URL}/api/v1/cars/${id}`)
+    fetch(`${URL}/api/v1/motorcycles/${id}`)
       .then((response) => response.json())
-      .then((data) => setCar(data));
+      .then((data) => setMotorcycle(data));
   }, [id]);
   const turnImage = () => {
     const img = document.getElementById('myImage');
@@ -31,51 +31,44 @@ const DetailsPage = () => {
 
   return (
     <div className="main-holder">
-      {car ? (
+      {motorcycle ? (
         <section className="details-holder">
           <div>
-            <img id="myImage" src={car.image_url} className="d-car-image" alt="img" />
+            <img id="myImage" src={motorcycle.image_url} className="d-motorcycle-image" alt="img" />
             <button type="button" className="rotate-btn" onClick={turnImage}>
               <img src={rotate} alt="rotate" width="40px" />
             </button>
           </div>
-          <div className="car-info">
+          <div className="motorcycle-info">
             <ul>
-              <li className="name">{car.name}</li>
+              <li className="name">{motorcycle.name}</li>
               <li className="-info">
                 PRICE
                 {' '}
                 <span>
-                  {car.price}
+                  {motorcycle.price}
                   $
                 </span>
               </li>
               <li className="-info">
                 DISCRIPTION
                 {' '}
-                <span>{car.description}</span>
+                <span>{motorcycle.description}</span>
               </li>
-              <li className="-info">
-                TEST DRIVE FEE
-                {' '}
-                <span>
-                  {car.test_drive_fee}
-                  $
-                </span>
-              </li>
+             
               <li className="-info">
                 MODEL
                 {' '}
-                <span>{car.model}</span>
+                <span>{motorcycle.model}</span>
               </li>
               <li className="-info">
                 YEAR MANUFACTURED
                 {' '}
-                <span>{car.year}</span>
+                <span>{motorcycle.year}</span>
               </li>
               <div className="link">
                 <Link to="/" className="discover">
-                  Discover more cars
+                  Discover more motorcycles
                   {' '}
                   <img src={arrow} alt="left arrow" width="10px" />
                 </Link>
@@ -86,11 +79,11 @@ const DetailsPage = () => {
           </div>
         </section>
       ) : (
-        <img className="loading-car" src={loader} alt="loading" />
+        <img className="loading-motorcycle" src={loader} alt="loading" />
       )}
       {isModalOpen && (
         <div className="modal">
-           <div className="modal-content">
+          <div className="modal-content">
             <button
               className="cls-m-btn"
               type="button"
@@ -99,7 +92,7 @@ const DetailsPage = () => {
               X
             </button>
             <br />
-            <Modal selectedCar={car} setIsModalOpen={setIsModalOpen} />
+            <Modal selectedMotorcycle={motorcycle} setIsModalOpen={setIsModalOpen} />
           </div>
         </div>
       )}
