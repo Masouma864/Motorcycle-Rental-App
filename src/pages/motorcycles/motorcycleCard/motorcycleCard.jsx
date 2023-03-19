@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import * as FaIcons from 'react-icons/fa';
 import { IconContext } from 'react-icons';
 
+
 const CarCard = ({ car }) => (
   <Link className="link" to={`/details/${car.id}`}>
     <div className="car-card d-flex flex-column p-5 position-relative">
