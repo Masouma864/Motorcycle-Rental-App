@@ -2,6 +2,8 @@ import { configureStore } from '@reduxjs/toolkit';
 import createMotorcycleReducer from './motorcycle/motorcycle';
 import deleteMotorcycleReducer from './deletemotorcycle/deletemotorcycle';
 import reservationReducer from './reservations/reservation';
+import { authReducer } from './auth/auth';
+import { motorcyclesReducer } from './motorcylces/motorcycles';
 
 const token = localStorage.getItem('token');
 const initialState = {
@@ -11,11 +13,15 @@ const initialState = {
   },
 };
 
+const rootReducer = combineReducers({
+  motorcycles: motorcyclesReducer,
+  newmotorcycle: createMotorcycleReducer,
+  auth: authReducer,
+  delete: deleteMotorcycleReducer,
+  reservations: reservationReducer,
+});
+
 export default configureStore({
-  reducer: {
-    newMotorcycle: createMotorcycleReducer,
-    delete: deleteMotorcycleReducer,
-    preloadedState: initialState,
-    reservation: reservationReducer,
-  },
+  reducer: rootReducer,
+  preloadedState: initialState,
 });

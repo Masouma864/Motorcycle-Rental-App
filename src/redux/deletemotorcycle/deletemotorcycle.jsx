@@ -1,8 +1,9 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import getMotorcyclesFromDB from '../../APIs/motorcycles';
+import { URL } from '../../constants';
 
-const Url = 'http://localhost:3002/api/v1/motorcycles';
+const Url = '${URL}/api/v1/motorcycles';
 
 export const deleteMotorcycle = createAsyncThunk(
   'delete/deleteMotorcycle',
@@ -28,33 +29,41 @@ const deleteMotorcycleSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(getAllMotorcycles.pending, (state) => {
-        state.loading = true;
-        state.error = null;
-      })
-      .addCase(getAllMotorcycles.fulfilled, (state, action) => {
-        state.motorcycles = action.payload;
-        state.loading = false;
-        state.error = null;
-      })
-      .addCase(getAllMotorcycles.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.error.message;
-      })
-      .addCase(deleteMotorcycle.pending, (state) => {
-        state.loading = true;
-        state.error = null;
-      })
-      .addCase(deleteMotorcycle.fulfilled, (state, action) => {
-        const filteredMotorcycles = state.motorcycles.filter((motorcycle) => motorcycle.id !== action.payload.id);
-        state.motorcycles = filteredMotorcycles;
-        state.loading = false;
-        state.error = null;
-      })
-      .addCase(deleteMotorcycle.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.error.message;
-      });
+      .addCase(getAllMotorcycles.pending, (state) => ({
+        ...state,
+        loading = true;
+        error = null;
+      }))
+      .addCase(getAllMotorcycles.fulfilled, (state, action) => ({
+        ...state,
+        motorcycles = action.payload;
+    loading = false;
+    error = null;
+  }))
+  .addCase(getAllMotorcycles.rejected, (state, action) =>( {
+        ...state,
+    loading = false;
+error = action.error.message;
+      }))
+      .addCase(deleteMotorcycle.pending, (state) => ({
+  ...state,
+  loading = true;
+  error = null;
+}))
+  .addCase(deleteMotorcycle.fulfilled, (state, action) => {
+    const filteredMotorcycles = state.motorcycles.filter((motorcycle) => motorcycle.id !== action.payload.id);
+    return {
+      ...state,
+      motorcycles = filteredMotorcycles;
+      loading = false;
+      error = null;
+    };
+  })
+  .addCase(deleteMotorcycle.rejected, (state, action) => ({
+    ...state,
+    loading = false,
+    error = action.error.message,
+  }));
   },
 });
 
