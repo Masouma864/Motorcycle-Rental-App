@@ -24,8 +24,8 @@ const AddMotorcycle = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     setIsLoading(true);
-    if (!carData.image) {
-      toast.error('Please select an image for the car');
+    if (!motorcycleData.image) {
+      toast.error('Please select an image for the motorcycle');
       setIsLoading(false);
       return;
     }
@@ -39,7 +39,7 @@ const AddMotorcycle = () => {
 
     dispatch(createMotorcycle(data)).then(() => {
       gohome();
-      toast.info('Created Car Successfully');
+      toast.info('Created Motorcycle Successfully');
       setIsLoading(false);
     });
   };
@@ -137,7 +137,7 @@ const AddMotorcycle = () => {
           type="submit"
           className="btn btn-primary mb-3"
         >
-           {isLoading ? <img src={loader} alt="loading" className="spinner" /> : 'Add Car'}
+           {isLoading ? <img src={loader} alt="loading" className="spinner" /> : 'Add Motorcycle'}
         </button>
       </form>
     </div>

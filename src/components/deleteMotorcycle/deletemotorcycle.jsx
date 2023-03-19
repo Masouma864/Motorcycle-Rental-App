@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { getAllMotorcycles, deleteMotorcycle } from '../../redux/deletemotorcycle/deletemotorcycle';
 import trashcan from '../../assets/trash.gif';
-import './deletecar.css';
+import './deletemotorcycle.css';
 import loaders from '../../assets/loader.gif';
 
 
@@ -17,8 +17,8 @@ const RemoveMotorcycle = () => {
   const { motorcycles, loading, error } = useSelector((state) => state.delete);
 
   const handledelete = (motorcycleId) => {
-    dispatch(deleteCar(carId)).then(() => {
-      toast.info('Deleted Car Successfully');
+    dispatch(deleteMotorcycle(motorcycleId)).then(() => {
+      toast.info('Deleted Motorcycle Successfully');
     });
   };
 
@@ -27,7 +27,7 @@ const RemoveMotorcycle = () => {
   };
 
   if (loading) {
-    return  (<div className="center"><img className="loading-cars" src={loaders} alt="loading" /></div>);
+    return  (<div className="center"><img className="loading-motorcycle" src={loaders} alt="loading" /></div>);
   }
 
   if (error) {
@@ -36,14 +36,14 @@ const RemoveMotorcycle = () => {
 
   return (
     <div className="d-flex w-full del-container">
-        <ol className="list-group list-group-numbered del-list"></ol>
+        <ol className="list-group list-group-numbered del-list">
       <div className="d-flex w-full del-header">
         <h2>
           Delete A Motorcycle
         </h2>
         <img src={trashcan} alt="trash" className="trash" />
       </div>
-      <ol className="list-group list-group-numbered del-list">
+     
         {motorcycles.map((motorcycle) => (
           <li key={motorcycle.id} className="list-group-item d-flex justify-content-between align-items-start">
             <span className="images">
