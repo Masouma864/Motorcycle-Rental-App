@@ -1,10 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './car-card.css';
+import './motorcycle-card.css';
 import PropTypes from 'prop-types';
 import * as FaIcons from 'react-icons/fa';
 import { IconContext } from 'react-icons';
-
 
 const CarCard = ({ car }) => (
   <Link className="link" to={`/details/${car.id}`}>

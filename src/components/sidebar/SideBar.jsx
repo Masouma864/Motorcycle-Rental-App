@@ -21,7 +21,7 @@ const SideBar = () => {
             sidebar ? 'sidebar-active' : ''
           }`}
         >
-          <h1 className="sidebar-title pt-3 ml-5">WheelWizard</h1>
+          <h1 className="sidebar-title pt-3 ml-5">Motorcycles Rental</h1>
           <Links />
           <SocialLinks />
         </div>

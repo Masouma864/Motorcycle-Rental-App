@@ -54,7 +54,7 @@ function ReservationForm() {
             styles={{
               control: (provided) => ({
                 ...provided,
-                borderRadius: '25px', 
+                borderRadius: '25px',
                 height: '2.7rem',
                 background: '#1e90ff',
                 border: 'none',
@@ -76,7 +76,7 @@ function ReservationForm() {
               }),
             }}
           />
-          <button id="book_now" type="button" onClick={handleModalOpen} tyle={{ marginLeft: '1rem' }}>Book Now</button>
+          <button id="book_now" type="button" onClick={handleModalOpen} style={{ marginLeft: '1rem' }}>Book Now</button>
         </div>
       </div>
       {isModalOpen && (

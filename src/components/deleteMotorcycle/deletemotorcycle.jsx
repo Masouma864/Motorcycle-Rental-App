@@ -6,7 +6,6 @@ import trashcan from '../../assets/trash.gif';
 import './deletemotorcycle.css';
 import loaders from '../../assets/loader.gif';
 
-
 const RemoveMotorcycle = () => {
   const dispatch = useDispatch();
 
@@ -27,7 +26,7 @@ const RemoveMotorcycle = () => {
   };
 
   if (loading) {
-    return  (<div className="center"><img className="loading-motorcycle" src={loaders} alt="loading" /></div>);
+    return (<div className="center"><img className="loading-motorcycle" src={loaders} alt="loading" /></div>);
   }
 
   if (error) {
@@ -36,14 +35,14 @@ const RemoveMotorcycle = () => {
 
   return (
     <div className="d-flex w-full del-container">
-        <ol className="list-group list-group-numbered del-list">
-      <div className="d-flex w-full del-header">
-        <h2>
-          Delete A Motorcycle
-        </h2>
-        <img src={trashcan} alt="trash" className="trash" />
-      </div>
-     
+      <ol className="list-group list-group-numbered del-list">
+        <div className="d-flex w-full del-header">
+          <h2>
+            Delete A Motorcycle
+          </h2>
+          <img src={trashcan} alt="trash" className="trash" />
+        </div>
+
         {motorcycles.map((motorcycle) => (
           <li key={motorcycle.id} className="list-group-item d-flex justify-content-between align-items-start">
             <span className="images">

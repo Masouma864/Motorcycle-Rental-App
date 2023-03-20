@@ -1,9 +1,10 @@
-import { configureStore } from '@reduxjs/toolkit';
+/* eslint-disable import/extensions */
+import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import createMotorcycleReducer from './motorcycle/motorcycle';
 import deleteMotorcycleReducer from './deletemotorcycle/deletemotorcycle';
-import reservationReducer from './reservations/reservation';
 import { authReducer } from './auth/auth';
-import { motorcyclesReducer } from './motorcylces/motorcycles';
+import { motorcyclesReducer } from './motorcycles/motorcycles';
+import reservationReducer from './reservations/reservation';
 
 const token = localStorage.getItem('token');
 const initialState = {

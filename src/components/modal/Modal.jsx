@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { getMotorcycles } from '../../redux/motorcycles/motorcycles';
 import { addReservation, fetchReservations } from '../../redux/reservations/reservation';
 import './modal.css';
-import { toast } from 'react-toastify';
 import loader from '../../assets/loader2.gif';
 
 const Modal = ({ selectedCity }) => {
@@ -55,15 +55,18 @@ const Modal = ({ selectedCity }) => {
     <form onSubmit={handleSubmit}>
       <h3>Fill the fieds below</h3>
 
-      <label htmlFor=" motorcycleName"> Motorcycle Name:
-        <select id="motorcycleName" value={motorcycleName} onChange={(e) => setMotorcycleName(e.target.value)} required >
+      <label htmlFor=" motorcycleName">
+        {' '}
+        Motorcycle Name:
+        <select id="motorcycleName" value={motorcycleName} onChange={(e) => setMotorcycleName(e.target.value)} required>
           <option value="">Select a motorcycle</option>
           {motorcycles.map((motorcycle) => (
             <option key={motorcycle.id} value={motorcycle.motorcycle_name}>{motorcycle.motorcycle_name}</option>
           ))}
         </select>
       </label>
-      <label htmlFor="duration">Duration:
+      <label htmlFor="duration">
+        Duration:
         <input
           type="number"
           id="duration"
@@ -72,7 +75,8 @@ const Modal = ({ selectedCity }) => {
           required
         />
       </label>
-      <label htmlFor="reservationDate">Reservation Date:
+      <label htmlFor="reservationDate">
+        Reservation Date:
         <input
           type="date"
           id="reservationDate"
@@ -80,12 +84,13 @@ const Modal = ({ selectedCity }) => {
           onChange={(e) => setReservationDate(e.target.value)}
         />
       </label>
-      <button type="submit">{isLoading ? (
+      <button type="submit">
+        {isLoading ? (
           <img src={loader} alt="loading" className="spinner" />
         ) : (
           'Book Reservation'
         )}
-        </button>
+      </button>
     </form>
   );
 };

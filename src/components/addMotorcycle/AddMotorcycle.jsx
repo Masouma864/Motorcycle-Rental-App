@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { createMotorcycle } from '../../redux/motorcycle/motorcycle';
 import './addmotorcycle.css';
-import { toast } from 'react-toastify';
 import loader from '../../assets/loader2.gif';
 
 const AddMotorcycle = () => {
@@ -76,7 +76,7 @@ const AddMotorcycle = () => {
             required
           />
         </div>
-        <div  className="w-full">
+        <div className="w-full">
           <input
             type="text"
             value={motorcycleData.description}
@@ -88,7 +88,7 @@ const AddMotorcycle = () => {
           />
         </div>
 
-        <div  className="w-full">
+        <div className="w-full">
           <input
             type="text"
             value={motorcycleData.model}
@@ -99,7 +99,7 @@ const AddMotorcycle = () => {
             required
           />
         </div>
-        <div  className="w-full">
+        <div className="w-full">
           <input
             type="number"
             value={motorcycleData.price}
@@ -137,7 +137,7 @@ const AddMotorcycle = () => {
           type="submit"
           className="btn btn-primary mb-3"
         >
-           {isLoading ? <img src={loader} alt="loading" className="spinner" /> : 'Add Motorcycle'}
+          {isLoading ? <img src={loader} alt="loading" className="spinner" /> : 'Add Motorcycle'}
         </button>
       </form>
     </div>

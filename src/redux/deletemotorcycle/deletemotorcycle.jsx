@@ -3,7 +3,7 @@ import axios from 'axios';
 import getMotorcyclesFromDB from '../../APIs/motorcycles';
 import { URL } from '../../constants';
 
-const Url = '${URL}/api/v1/motorcycles';
+const Url = `${URL}/api/v1/motorcycles`;
 
 export const deleteMotorcycle = createAsyncThunk(
   'delete/deleteMotorcycle',
@@ -31,39 +31,39 @@ const deleteMotorcycleSlice = createSlice({
     builder
       .addCase(getAllMotorcycles.pending, (state) => ({
         ...state,
-        loading = true;
-        error = null;
+        loading: true,
+        error: null,
       }))
       .addCase(getAllMotorcycles.fulfilled, (state, action) => ({
         ...state,
-        motorcycles = action.payload;
-    loading = false;
-    error = null;
-  }))
-  .addCase(getAllMotorcycles.rejected, (state, action) =>( {
+        motorcycles: action.payload,
+        loading: false,
+        error: null,
+      }))
+      .addCase(getAllMotorcycles.rejected, (state, action) => ({
         ...state,
-    loading = false;
-error = action.error.message;
+        loading: false,
+        error: action.error.message,
       }))
       .addCase(deleteMotorcycle.pending, (state) => ({
-  ...state,
-  loading = true;
-  error = null;
-}))
-  .addCase(deleteMotorcycle.fulfilled, (state, action) => {
-    const filteredMotorcycles = state.motorcycles.filter((motorcycle) => motorcycle.id !== action.payload.id);
-    return {
-      ...state,
-      motorcycles = filteredMotorcycles;
-      loading = false;
-      error = null;
-    };
-  })
-  .addCase(deleteMotorcycle.rejected, (state, action) => ({
-    ...state,
-    loading = false,
-    error = action.error.message,
-  }));
+        ...state,
+        loading: true,
+        error: null,
+      }))
+      .addCase(deleteMotorcycle.fulfilled, (state, action) => {
+        const filteredMotorcycles = state.motorcycles.filter((motorcycle) => motorcycle.id !== action.payload.id);
+        return {
+          ...state,
+          motorcycles: filteredMotorcycles,
+          loading: false,
+          error: null,
+        };
+      })
+      .addCase(deleteMotorcycle.rejected, (state, action) => ({
+        ...state,
+        loading: false,
+        error: action.error.message,
+      }));
   },
 });
 
