@@ -59,6 +59,7 @@ const AddMotorcycle = () => {
   return (
     <div className="form-container">
       <form
+        className="add-motorcycle-form"
         onSubmit={handleSubmit}
       >
         <h2 className="title">
@@ -72,7 +73,7 @@ const AddMotorcycle = () => {
             value={motorcycleData.name}
             onChange={handleInputChange}
             autoComplete="off"
-            className="w-full form-control"
+            className="form-control"
             required
           />
         </div>
@@ -82,7 +83,7 @@ const AddMotorcycle = () => {
             value={motorcycleData.description}
             name="description"
             onChange={handleInputChange}
-            className="w-full form-control"
+            className="form-control"
             placeholder="Description"
             required
           />
@@ -95,7 +96,7 @@ const AddMotorcycle = () => {
             placeholder="Model"
             name="model"
             onChange={handleInputChange}
-            className="w-full form-control"
+            className="form-control"
             required
           />
         </div>
@@ -106,7 +107,7 @@ const AddMotorcycle = () => {
             placeholder="Price"
             name="price"
             onChange={handleInputChange}
-            className="w-full form-control"
+            className="form-control"
             required
           />
         </div>

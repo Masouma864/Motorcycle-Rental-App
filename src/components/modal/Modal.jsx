@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { getMotorcycles } from '../../redux/motorcycles/motorcycles';
 import { addReservation, fetchReservations } from '../../redux/reservations/reservation';
-import './modal.css';
 import loader from '../../assets/loader2.gif';
 
 const Modal = ({ selectedCity }) => {

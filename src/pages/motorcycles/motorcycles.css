@@ -1,20 +1,53 @@
-.motorcycles-container {
+.motorcycle-card {
   align-items: center;
-  gap: 3rem;
-  justify-content: space-between;
-  width: 100%;
+  justify-content: flex-end;
+  height: 37rem;
 }
 
-.pagination-btn {
-  background-color: #98c10f;
-  width: 76px;
-  border-bottom-right-radius: 40px;
-  padding: 8px 0;
+.motorcycle-image {
+  height: auto;
+  width: 19rem;
+}
+
+.motorcycles-icons svg {
+  border: 1px solid gray;
+  border-radius: 50%;
+  margin: 0 10px;
+  padding: 6px;
+  box-sizing: content-box;
+}
+
+.link {
+  color: black;
+}
+
+.back-for-motorcycles {
+  position: absolute;
+  height: 18rem;
+  width: 19rem;
+  z-index: -111111111;
+  top: 11%;
+  border-radius: 50%;
+  opacity: 0.5;
+}
+
+.motorcycleload {
+  height: 18rem;
+  width: 19rem;
 }
 
 @media only screen and (max-width: 768px) {
-  .cars-container {
-    gap: 0;
-    justify-content: flex-start;
+  .motorcycle-card {
+    height: auto;
+  }
+
+  .motorcycle-image {
+    height: auto;
+    width: 21rem;
+  }
+
+  .v-name {
+    font-size: 3rem;
+    width: 100%;
   }
 }
