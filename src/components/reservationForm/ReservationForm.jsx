@@ -35,17 +35,14 @@ function ReservationForm() {
           </div>
         </div>
         <div className="title">
-          <h4>BOOK A TEST DRIVE WITH WHEEL-WIZARD</h4>
+          <h4>BOOK A TEST DRIVE </h4>
           <hr className="divider" />
           <p style={{ color: '#fff' }}>
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ducimus, blanditiis. lorem10
           </p>
         </div>
-        <div className="buttons">
-          {/* <button type="button" onClick={() =>
-            handleCitySelection(selectedCity)}>
-            Select City
-            </button> */}
+        <div className="buttons" style={{ display: 'flex', alignItems: 'center', marginTop: '2rem' }}>
+
           <Select
             id="select_city"
             className="select"
@@ -53,10 +50,11 @@ function ReservationForm() {
             value={selectedCity}
             onChange={setSelectedCity}
             placeholder="Select a City..."
+            required
             styles={{
               control: (provided) => ({
                 ...provided,
-                borderRadius: '25px', // change the border-radius to your desired value
+                borderRadius: '25px',
                 height: '2.7rem',
                 background: '#1e90ff',
                 border: 'none',
@@ -71,9 +69,14 @@ function ReservationForm() {
                 ...provided,
                 color: 'white',
               }),
+              menu: (provided) => ({
+                ...provided,
+                zIndex: 100,
+                width: '200px',
+              }),
             }}
           />
-          <button id="book_now" type="button" onClick={handleModalOpen}>Book Now</button>
+          <button id="book_now" type="button" onClick={handleModalOpen} style={{ marginLeft: '1rem' }}>Book Now</button>
         </div>
       </div>
       {isModalOpen && (

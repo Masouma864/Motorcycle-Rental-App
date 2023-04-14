@@ -1,7 +1,7 @@
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import SideBar from '../components/sidebar/SideBar';
-import Motorcycles from '../pages/motorcycles/Motorcycles';
+import Motorcycles from '../pages/motorcycles/motorcycles';
 import AddMotorcycle from '../components/addMotorcycle/AddMotorcycle';
 import UserReservationTable from '../components/userReservationTable/UserReservationTable';
 import RemoveMotorcycle from '../components/deleteMotorcycle/deletemotorcycle';

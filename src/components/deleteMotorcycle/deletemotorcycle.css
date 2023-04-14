@@ -1,0 +1,9 @@
+.del-container {
+  margin-top: 5%;
+  height: 100vh;
+  align-items: center;
+  flex-direction: column;
+  background-image: url(../../assets/delete-car.webp);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
