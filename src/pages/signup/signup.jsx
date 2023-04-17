@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 import { useDispatch, useSelector } from 'react-redux';
 import { signup } from '../../redux/auth/auth';
-import loader from '../../assets/loader.gif';
+import loader from '../../assets/loader2.gif';
 
 const SignupForm = () => {
   const [name, setName] = useState('');
@@ -33,13 +33,13 @@ const SignupForm = () => {
     if (success) {
       navigate('/login');
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line
   }, [success]);
 
   return (
     <div className="form-cont">
       <Form className="login-form" onSubmit={handleSubmit}>
-        <h1 className="sidebar-title-signup pt-3 ml-5">WheelWizard</h1>
+        <h1 className="sidebar-title-signup pt-3 ml-5">Motorcycle</h1>
         <Form.Group className="mb-3" controlId="formBasicName">
           <Form.Control
             type="name"

@@ -1,6 +1,9 @@
-import { configureStore } from '@reduxjs/toolkit';
+/* eslint-disable import/extensions */
+import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import createMotorcycleReducer from './motorcycle/motorcycle';
 import deleteMotorcycleReducer from './deletemotorcycle/deletemotorcycle';
+import { authReducer } from './auth/auth';
+import { motorcyclesReducer } from './motorcycles/motorcycles';
 import reservationReducer from './reservations/reservation';
 
 const token = localStorage.getItem('token');
@@ -11,11 +14,15 @@ const initialState = {
   },
 };
 
+const rootReducer = combineReducers({
+  motorcycles: motorcyclesReducer,
+  newmotorcycle: createMotorcycleReducer,
+  auth: authReducer,
+  delete: deleteMotorcycleReducer,
+  reservations: reservationReducer,
+});
+
 export default configureStore({
-  reducer: {
-    newMotorcycle: createMotorcycleReducer,
-    delete: deleteMotorcycleReducer,
-    preloadedState: initialState,
-    reservation: reservationReducer,
-  },
+  reducer: rootReducer,
+  preloadedState: initialState,
 });

@@ -1,18 +1,17 @@
 .app {
-margin: 0;
-display: grid;
-height: auto;
-background-color: #e3e3e3;
-grid-template-columns: 30% 60%;
+  display: flex;
 }
 
-ul{
-list-style: none;
+ul {
+  list-style: none;
 }
 
 a {
-text-decoration: none;
+  text-decoration: none;
 }
-.main-container{
-  height: 100vh;
+
+@media only screen and (max-width: 768px) {
+  .app {
+    flex-direction: column;
+  }
 }

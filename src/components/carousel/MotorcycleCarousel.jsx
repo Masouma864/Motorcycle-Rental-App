@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Carousel } from 'react-bootstrap';
 import * as RxIcons from 'react-icons/rx';
-import MotorcycleCard from '../../pages/motorcycles/MotorcycleCard/MotorcycleCard';
+import MotorcycleCard from '../../pages/motorcycles/MotorcycleCard/motorcycleCard';
 import './carousel.css';
 
 const MotorcycleCarousel = ({ motorcycles }) => {
