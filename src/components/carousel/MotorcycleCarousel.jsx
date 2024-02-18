@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Carousel } from 'react-bootstrap';
 import * as RxIcons from 'react-icons/rx';
-import MotorcycleCard from '../../pages/motorcycles/MotorcycleCard/motorcycleCard';
+
 import './carousel.css';
 
 const MotorcycleCarousel = ({ motorcycles }) => {
@@ -53,7 +53,7 @@ const MotorcycleCarousel = ({ motorcycles }) => {
           <Carousel.Item key={motorcycle.id}>
             <div className="d-flex justify-content-around">
               {motorcycles.slice(i, i + 3).map((motorcycle) => (
-                <MotorcycleCard key={motorcycle.id} motorcycle={motorcycle} />
+                <MotorcycleCarousel key={motorcycle.id} motorcycle={motorcycle} />
               ))}
             </div>
           </Carousel.Item>
